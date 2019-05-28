@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-tab2',
@@ -9,7 +10,10 @@ import { NavController } from '@ionic/angular';
 export class Tab2Page {
 
   public contatos: Array<Object>;
-constructor(public navCtrl: NavController) {
+
+  private baseURL : string = "https://api.themoviedb.org/3";
+
+constructor(public navCtrl: NavController, public http: Http) {
   this.contatos = [
     {
       "nome" :  "Bruno",
@@ -39,6 +43,22 @@ ngOnInit(){
 }
 
 IonViewDidLoad(){
+
   this.teste();
+
+  this.http.get(this.baseURL + "/movie/latest" + this.getAPIKey()).subscribe(
+  data => {
+    const obj = (data as any);
+    const obj_json = JSON.parse(obj._body);
+    console.log(obj_json); 
+  }, error =>{
+    console.log(error);
+  } 
+
+  )
+  }
+
+private getAPIKey() : string{
+  return "?api_key=26d63128834799fb3d1754b6c5365337";
 }
 }
