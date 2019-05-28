@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
 public bemvindo:string = "Bem vindo ao Ionic 4";
-public int:number = 0;
+public num:number = 0;
 public bool:Boolean = true;
-public lista:Array<string> = ['teste'];
+public listanum:Array<number> = [1,2,3,4,5]
+public lista:Array<string> = ['Rodrigo','Carla', 'Charles', 'Bruno', 'Nairan'];
 public listaAny:Array<any> = ['teste',10,true];
-
 
 
 }
