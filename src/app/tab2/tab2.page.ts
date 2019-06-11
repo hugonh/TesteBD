@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Http } from '@angular/http';
+import { MovieProviderService } from '../movie-provider.service';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
+  providers: [MovieProviderService]
 })
 export class Tab2Page {
 
@@ -13,7 +15,7 @@ export class Tab2Page {
 
   private baseURL : string = "https://api.themoviedb.org/3";
 
-constructor(public navCtrl: NavController, public http: Http) {
+constructor(public navCtrl: NavController, public movieProviderService: MovieProviderService) {
   this.contatos = [
     {
       "nome" :  "Bruno",
@@ -38,15 +40,14 @@ constructor(public navCtrl: NavController, public http: Http) {
 public teste():void{
  // alert("A função funcionou");
 }
-ngOnInit(){
+/*ngOnInit(){
   this.teste();
-}
+} */
 
 IonViewDidLoad(){
 
   this.teste();
-
-  this.http.get(this.baseURL + "/movie/latest" + this.getAPIKey()).subscribe(
+this.movieProviderService.getLatestMovie().subscribe(
   data => {
     const obj = (data as any);
     const obj_json = JSON.parse(obj._body);
