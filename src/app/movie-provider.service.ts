@@ -10,10 +10,10 @@ export class MovieProviderService {
 
   constructor(public http: Http) {
     console.log("Hello movieProvider Service Provider");
-  }
+   }
    public getLatestMovie(){
     return this.http.get(this.baseURL + "/movie/latest" + this.getAPIKey());
-   
+
    }
 
    public getPopularMovie(){

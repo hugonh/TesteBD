@@ -26,11 +26,11 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'feed',
+        path: 'tab3',
         children: [
           {
             path: '',
-            loadChildren: '../feed/feed.module#FeedPageModule'
+            loadChildren: '../tab3/tab3.module#Tab3PageModule'
           }
         ]
       },
